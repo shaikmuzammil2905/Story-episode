@@ -2,13 +2,11 @@ import React from 'react';
 import Link from 'next/link';
 import styles from './Button.module.css';
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   variant?: 'primary' | 'secondary' | 'outline';
   href?: string;
-  onClick?: () => void;
-  className?: string;
-  type?: 'button' | 'submit' | 'reset';
+  size?: 'small' | 'medium' | 'large';
   fullWidth?: boolean;
 }
 
@@ -16,12 +14,12 @@ export default function Button({
   children,
   variant = 'primary',
   href,
-  onClick,
   className = '',
-  type = 'button',
+  size = 'medium',
   fullWidth = false,
+  ...props
 }: ButtonProps) {
-  const baseClass = `${styles.btn} ${styles[`btn-${variant}`]} ${fullWidth ? styles.fullWidth : ''} ${className}`;
+  const baseClass = `${styles.btn} ${styles[`btn-${variant}`]} ${styles[`btn-${size}`]} ${fullWidth ? styles.fullWidth : ''} ${className}`;
 
   if (href) {
     return (
@@ -32,7 +30,7 @@ export default function Button({
   }
 
   return (
-    <button type={type} className={baseClass} onClick={onClick}>
+    <button className={baseClass} {...props}>
       {children}
     </button>
   );

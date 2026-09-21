@@ -32,7 +32,7 @@ export default function Home() {
           <div className={styles.heroImageWrapper}>
             <div className={styles.heroVisual}>
               <Image 
-                src="https://images.unsplash.com/photo-1474366521946-c3d4b507abf2?w=1600&q=80" 
+                src="/images/hero/main.jpg" 
                 alt="Storytelling" 
                 fill 
                 className={styles.heroImg}
