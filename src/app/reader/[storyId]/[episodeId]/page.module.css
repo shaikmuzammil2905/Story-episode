@@ -1,0 +1,159 @@
+.readerWrapper {
+  min-height: 100vh;
+  background: var(--soft-cream);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  background: var(--white);
+  border-bottom: 1px solid var(--subtle-gray);
+  z-index: 50;
+  height: 60px;
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-main);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.backBtn:hover {
+  color: var(--story-blue);
+}
+
+.episodeTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: center;
+  flex: 1;
+  padding: 0 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.iconBtn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  border-radius: 50%;
+  transition: background 0.2s, color 0.2s;
+}
+
+.iconBtn:hover {
+  background: var(--subtle-gray);
+  color: var(--text-main);
+}
+
+.mainContent {
+  flex: 1;
+  padding: 4rem 1rem;
+}
+
+.contentContainer {
+  max-width: 680px;
+  margin: 0 auto;
+  background: var(--white);
+  padding: 4rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+}
+
+.contentHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  color: var(--deep-navy);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.author {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.textContent {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  line-height: 2;
+  color: #333;
+}
+
+.textContent p {
+  margin-bottom: 1.5rem;
+}
+
+.footerNav {
+  background: var(--white);
+  border-top: 1px solid var(--subtle-gray);
+  padding: 1.5rem 0;
+  margin-top: auto;
+}
+
+.footerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 800px;
+}
+
+.homeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--subtle-gray);
+  border-radius: 50%;
+  color: var(--text-main);
+  transition: background 0.2s;
+}
+.homeBtn:hover {
+  background: var(--light-blue-bg);
+  color: var(--story-blue);
+}
+
+@media (max-width: 768px) {
+  .contentContainer {
+    padding: 2rem 1.5rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .textContent {
+    font-size: 1.0625rem;
+  }
+  
+  .episodeTitle {
+    display: none;
+  }
+}

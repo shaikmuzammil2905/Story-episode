@@ -4,10 +4,12 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Search, Bell, Menu, X, Bookmark, User } from 'lucide-react';
 import styles from './Navbar.module.css';
+import SearchModal from './SearchModal';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,7 +47,7 @@ export default function Navbar() {
 
         {/* Actions */}
         <div className={styles.actions}>
-          <button className={styles.iconBtn} aria-label="Search">
+          <button className={styles.iconBtn} aria-label="Search" onClick={() => setSearchOpen(true)}>
             <Search size={20} />
           </button>
           <Link href="/library" className={`${styles.iconBtn} ${styles.desktopOnly}`} aria-label="Library">
@@ -91,6 +93,8 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className={styles.overlay} onClick={() => setMobileMenuOpen(false)} />
       )}
+
+      <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );
 }

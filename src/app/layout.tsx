@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MobileBottomNav from "@/components/MobileBottomNav";
+import WhatsAppFab from "@/components/WhatsAppFab";
 
 export const metadata: Metadata = {
   title: "StoryEpisodes | Read • Explore • Keep Coming Back",
@@ -39,6 +40,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <MobileBottomNav />
+        <WhatsAppFab />
       </body>
     </html>
   );

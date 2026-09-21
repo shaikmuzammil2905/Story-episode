@@ -1,0 +1,77 @@
+.header {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.filtersSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  background: var(--soft-cream);
+  border: 1px solid var(--subtle-gray);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+}
+
+.searchIcon {
+  color: var(--text-muted);
+  margin-right: 0.75rem;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  outline: none;
+  color: var(--text-main);
+  font-family: var(--font-sans);
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.select {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--subtle-gray);
+  background: var(--soft-cream);
+  font-family: var(--font-sans);
+  color: var(--text-main);
+  outline: none;
+  min-width: 150px;
+  flex: 1;
+}
+
+.storyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .filtersSection {
+    flex-direction: row;
+    align-items: center;
+  }
+  .searchBox {
+    flex: 2;
+  }
+  .filters {
+    flex: 3;
+    justify-content: flex-end;
+  }
+}
