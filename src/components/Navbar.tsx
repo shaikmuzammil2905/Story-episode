@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Search, Bell, Menu, X, Bookmark, User } from 'lucide-react';
 import styles from './Navbar.module.css';
 import SearchModal from './SearchModal';
@@ -33,7 +34,7 @@ export default function Navbar() {
 
         {/* Logo */}
         <Link href="/" className={styles.logo}>
-          Story<span>Episodes</span>
+          <Image src="/logo.png" alt="StoryEpisodes" width={150} height={40} className={styles.logoImage} />
         </Link>
 
         {/* Desktop Nav */}
@@ -64,7 +65,7 @@ export default function Navbar() {
       <div className={`${styles.mobileDrawer} ${mobileMenuOpen ? styles.open : ''}`}>
         <div className={styles.drawerHeader}>
           <Link href="/" className={styles.logo} onClick={() => setMobileMenuOpen(false)}>
-            Story<span>Episodes</span>
+            <Image src="/logo.png" alt="StoryEpisodes" width={120} height={32} className={styles.logoImage} />
           </Link>
           <button 
             className={styles.closeBtn} 

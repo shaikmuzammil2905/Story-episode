@@ -2,8 +2,9 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Home, BookOpen, Layers, Bookmark, User } from 'lucide-react';
+import { Home, BookOpen, Compass, User } from 'lucide-react';
 import styles from './MobileBottomNav.module.css';
 
 export default function MobileBottomNav() {
@@ -12,8 +13,7 @@ export default function MobileBottomNav() {
   const navItems = [
     { name: 'Home', path: '/', icon: Home },
     { name: 'Stories', path: '/stories', icon: BookOpen },
-    { name: 'Genres', path: '/genres', icon: Layers },
-    { name: 'Library', path: '/library', icon: Bookmark },
+    { name: 'Explore', path: '/genres', icon: Compass },
     { name: 'Profile', path: '/login', icon: User },
   ];
 

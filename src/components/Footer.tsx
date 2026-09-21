@@ -2,16 +2,17 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Phone } from 'lucide-react';
+import Image from 'next/image';
+import { Facebook, Twitter, Instagram, Youtube, Phone, Mail, MapPin } from 'lucide-react';
 import styles from './Footer.module.css';
 
 export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.footerContainer}`}>
-        <div className={styles.brandCol}>
+        <div className={styles.brandSection}>
           <Link href="/" className={styles.logo}>
-            Story<span>Episodes</span>
+            <Image src="/logo.png" alt="StoryEpisodes" width={180} height={48} className={styles.logoImage} />
           </Link>
           <p className={styles.tagline}>Read • Explore • Keep Coming Back</p>
           <div className={styles.socials}>
@@ -42,9 +43,9 @@ export default function Footer() {
         <div className={styles.linksCol}>
           <h3>Legal</h3>
           <nav>
-            <Link href="/privacy-policy">Privacy Policy</Link>
-            <Link href="/terms-and-conditions">Terms & Conditions</Link>
-            <Link href="/cookie-policy">Cookie Policy</Link>
+            <Link href="/">Privacy Policy</Link>
+            <Link href="/">Terms & Conditions</Link>
+            <Link href="/">Cookie Policy</Link>
           </nav>
         </div>
 
