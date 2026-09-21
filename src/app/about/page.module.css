@@ -76,6 +76,74 @@
   margin-bottom: 1rem;
 }
 
+.aboutImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.aboutImage {
+  object-fit: cover;
+}
+
+.ideaList {
+  list-style: none;
+  margin: 0 0 1.5rem 0;
+  padding: 0;
+}
+
+.ideaList li {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--story-blue);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ideaList li::before {
+  content: "•";
+  color: var(--warm-gold);
+}
+
+.futureSection {
+  background: var(--white);
+  padding: 4rem;
+  border-radius: 32px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+
+.futureList {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.futureList li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.1rem;
+  color: var(--text-main);
+  background: var(--soft-cream);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.futureList li::before {
+  content: "✨";
+  font-size: 1.2rem;
+}
+
 @media (max-width: 768px) {
   .hero {
     padding: 6rem 0 4rem;
@@ -93,5 +161,13 @@
   .statsRow {
     flex-direction: column;
     gap: 1.5rem;
+  }
+
+  .futureSection {
+    padding: 2rem 1.5rem;
+  }
+  
+  .futureList {
+    grid-template-columns: 1fr;
   }
 }

@@ -14,30 +14,47 @@ export default function Home() {
 
   return (
     <div className={styles.homeWrapper}>
-      {/* 1. Hero Section */}
       <section className={styles.heroSection}>
+        <div className={styles.heroBackground}>
+          <Image 
+            src="/images/hero/desktop.png" 
+            alt="Storytelling Desktop" 
+            fill 
+            className={`${styles.heroBgImg} ${styles.desktopHero}`}
+            priority
+          />
+          <Image 
+            src="/images/hero/mobile.png" 
+            alt="Storytelling Mobile" 
+            fill 
+            className={`${styles.heroBgImg} ${styles.mobileHero}`}
+            priority
+          />
+          <div className={styles.heroOverlay}></div>
+        </div>
         <div className={`container ${styles.heroContainer}`}>
           <div className={styles.heroContent}>
             <h1 className="heading-xl animate-fade-in">
               Discover Amazing Stories,<br/>One Episode at a Time
             </h1>
-            <p className={`text-lg text-muted animate-fade-in ${styles.heroDelay}`}>
-              Dive into captivating stories, follow your favorite series, explore new genres, and never miss an episode.
+            <p className={`text-lg animate-fade-in ${styles.heroDelay}`}>
+              Dive into captivating stories, follow your favorite series, and never miss an episode.
             </p>
             <div className={`animate-fade-in ${styles.heroDelay2} ${styles.heroActions}`}>
               <Button href="/stories" variant="primary">Start Reading</Button>
               <Button href="/genres" variant="secondary">Explore Stories</Button>
             </div>
-          </div>
-          <div className={styles.heroImageWrapper}>
-            <div className={styles.heroVisual}>
-              <Image 
-                src="/images/hero/main.jpg" 
-                alt="Storytelling" 
-                fill 
-                className={styles.heroImg}
-                priority
-              />
+            
+            <div className={`animate-fade-in ${styles.heroDelay2} ${styles.heroSearch}`}>
+              <div className={styles.searchBox}>
+                <Search className={styles.searchIcon} size={24} />
+                <input 
+                  type="text" 
+                  placeholder="Search stories, authors, genres..." 
+                  className={styles.searchInput}
+                />
+                <Button variant="primary">Search</Button>
+              </div>
             </div>
           </div>
         </div>
@@ -112,27 +129,62 @@ export default function Home() {
       {/* 6. How StoryEpisodes Works */}
       <section className={`section-padding ${styles.howItWorksSection}`}>
         <div className="container">
-          <h2 className="heading-lg text-center" style={{marginBottom: '3rem'}}>How StoryEpisodes Works</h2>
-          <div className={styles.stepsGrid}>
-            <div className={styles.stepCard}>
-              <div className={styles.stepIcon}><Search size={32} /></div>
-              <h3>01 Discover</h3>
-              <p>Browse through hundreds of unique stories across different genres.</p>
+          <h2 className="heading-lg text-center" style={{marginBottom: '4rem'}}>How StoryEpisodes Works</h2>
+          <div className={styles.howItWorksWrapper}>
+            <div className={styles.howList}>
+              <Link href="/genres" className={styles.howItem}>
+                <div className={styles.howNumber}>01</div>
+                <div className={styles.howContent}>
+                  <h3>Discover</h3>
+                  <p>Explore stories and genres.</p>
+                </div>
+                <div className={styles.howIcon}><Search size={24} /></div>
+              </Link>
+              
+              <Link href="/stories" className={styles.howItem}>
+                <div className={styles.howNumber}>02</div>
+                <div className={styles.howContent}>
+                  <h3>Choose a Story</h3>
+                  <p>Open a story and explore its episodes.</p>
+                </div>
+                <div className={styles.howIcon}><BookOpen size={24} /></div>
+              </Link>
+              
+              <div className={styles.howItem}>
+                <div className={styles.howNumber}>03</div>
+                <div className={styles.howContent}>
+                  <h3>Read an Episode</h3>
+                  <p>Enjoy the story one episode at a time.</p>
+                </div>
+                <div className={styles.howIcon}><Smartphone size={24} /></div>
+              </div>
+              
+              <div className={styles.howItem}>
+                <div className={styles.howNumber}>04</div>
+                <div className={styles.howContent}>
+                  <h3>Continue the Journey</h3>
+                  <p>Return and continue from where you stopped.</p>
+                </div>
+                <div className={styles.howIcon}><PlayCircle size={24} /></div>
+              </div>
+              
+              <div className={styles.howItem}>
+                <div className={styles.howNumber}>05</div>
+                <div className={styles.howContent}>
+                  <h3>Follow & Discover</h3>
+                  <p>Follow stories and discover new episodes.</p>
+                </div>
+                <div className={styles.howIcon}><Bell size={24} /></div>
+              </div>
             </div>
-            <div className={styles.stepCard}>
-              <div className={styles.stepIcon}><BookOpen size={32} /></div>
-              <h3>02 Choose</h3>
-              <p>Pick a story that captures your imagination and dive right in.</p>
-            </div>
-            <div className={styles.stepCard}>
-              <div className={styles.stepIcon}><Smartphone size={32} /></div>
-              <h3>03 Read</h3>
-              <p>Enjoy a comfortable, distraction-free reading experience on any device.</p>
-            </div>
-            <div className={styles.stepCard}>
-              <div className={styles.stepIcon}><Bell size={32} /></div>
-              <h3>04 Follow</h3>
-              <p>Bookmark your favorites and get notified of new episodes.</p>
+            
+            <div className={styles.howVisual}>
+              <Image 
+                src="https://images.unsplash.com/photo-1455390582262-044cdead27d8?w=800&q=80" 
+                alt="Story discovery journey" 
+                fill 
+                className={styles.howImg}
+              />
             </div>
           </div>
         </div>
