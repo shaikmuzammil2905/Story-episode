@@ -9,7 +9,7 @@ export default function RegisterPage() {
       <div style={{ background: 'var(--white)', padding: '3rem', borderRadius: '24px', boxShadow: '0 20px 40px rgba(0,0,0,0.05)', width: '100%', maxWidth: '480px', textAlign: 'center' }}>
         
         <Link href="/" style={{ display: 'inline-block', marginBottom: '2rem' }}>
-          <Image src="/logo.png" alt="StoryEpisodes" width={180} height={48} />
+          <Image src="/logo.png" alt="StoryEpisodes" width={180} height={48} style={{ mixBlendMode: 'multiply' }} />
         </Link>
         
         <h1 className="heading-lg" style={{ marginBottom: '0.5rem' }}>Create an Account</h1>

@@ -36,6 +36,11 @@
   color: var(--story-blue);
 }
 
+.logoImage {
+  mix-blend-mode: multiply;
+  object-fit: contain;
+}
+
 .desktopNav {
   display: none;
   align-items: center;
