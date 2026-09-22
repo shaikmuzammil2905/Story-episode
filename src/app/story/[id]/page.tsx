@@ -9,6 +9,7 @@ import styles from './page.module.css';
 import { mockStories } from '../../../data/mockData';
 import Button from '../../../components/Button';
 import ShareModal from '../../../components/ShareModal';
+import StoryCard from '../../../components/StoryCard';
 
 // Next.js App Router dynamic params
 export default function StoryDetailsPage({ params }: { params: { id: string } }) {
@@ -127,6 +128,19 @@ export default function StoryDetailsPage({ params }: { params: { id: string } })
                 </Link>
               ))
             )}
+          </div>
+        </div>
+      {/* Related Stories Section */}
+      <section className="section-padding" style={{ backgroundColor: 'var(--soft-cream)' }}>
+        <div className="container">
+          <h2 className="heading-md" style={{ marginBottom: '2rem' }}>Related Stories</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '2rem' }}>
+            {mockStories
+              .filter(s => s.genre === story.genre && s.id !== story.id)
+              .slice(0, 3)
+              .map(relatedStory => (
+                <StoryCard key={relatedStory.id} story={relatedStory} />
+              ))}
           </div>
         </div>
       </section>
