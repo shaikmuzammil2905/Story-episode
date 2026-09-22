@@ -8,6 +8,7 @@ import styles from './page.module.css';
 import { mockStories } from '../../../../data/mockData';
 import Button from '../../../../components/Button';
 import ShareModal from '../../../../components/ShareModal';
+import StoryCard from '../../../../components/StoryCard';
 
 export default function ReaderPage({ params }: { params: Promise<{ storyId: string, episodeId: string }> | { storyId: string, episodeId: string } }) {
   const [isShareOpen, setIsShareOpen] = useState(false);
@@ -77,6 +78,23 @@ export default function ReaderPage({ params }: { params: Promise<{ storyId: stri
           />
         </div>
       </main>
+
+      {/* Recommended Story Section */}
+      {!nextEpisode && (
+        <section style={{ padding: '2rem 1rem', backgroundColor: 'var(--soft-cream)' }}>
+          <div className="container" style={{ maxWidth: '800px' }}>
+            <h3 className="heading-sm" style={{ marginBottom: '1.5rem', textAlign: 'center' }}>You've reached the end! Try these next:</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '1.5rem' }}>
+              {mockStories
+                .filter(s => s.genre === story.genre && s.id !== story.id)
+                .slice(0, 2)
+                .map(relatedStory => (
+                  <StoryCard key={relatedStory.id} story={relatedStory} />
+                ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Reader Footer Navigation */}
       <footer className={styles.footerNav}>
