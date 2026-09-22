@@ -12,7 +12,7 @@ export default function Footer() {
       <div className={`container ${styles.footerContainer}`}>
         <div className={styles.brandSection}>
           <Link href="/" className={styles.logo}>
-            <Image src="/logo.png" alt="StoryEpisodes" width={180} height={48} className={styles.logoImage} />
+            <Image src="/footer-logo.png" alt="StoryEpisodes" width={180} height={48} className={styles.logoImage} />
           </Link>
           <p className={styles.tagline}>Read • Explore • Keep Coming Back</p>
           <div className={styles.socials}>

@@ -157,3 +157,6 @@ button {
     padding-bottom: var(--bottom-nav-height);
   }
 }
+
+body { overflow-wrap: break-word; word-wrap: break-word; }
+
