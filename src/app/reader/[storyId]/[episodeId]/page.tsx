@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, use } from 'react';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { notFound, useParams } from 'next/navigation';
 import { ArrowLeft, ArrowRight, Home, Settings, Share2, Bookmark } from 'lucide-react';
 import styles from './page.module.css';
 import { mockStories } from '../../../../data/mockData';
@@ -10,7 +10,8 @@ import Button from '../../../../components/Button';
 import ShareModal from '../../../../components/ShareModal';
 import StoryCard from '../../../../components/StoryCard';
 
-export default function ReaderPage({ params }: { params: Promise<{ storyId: string, episodeId: string }> | { storyId: string, episodeId: string } }) {
+export default function ReaderPage() {
+  const params = useParams();
   const [isShareOpen, setIsShareOpen] = useState(false);
   const [pageUrl, setPageUrl] = useState('');
 
@@ -18,14 +19,13 @@ export default function ReaderPage({ params }: { params: Promise<{ storyId: stri
     setPageUrl(window.location.href);
   }, []);
 
-  const resolvedParams = params instanceof Promise ? use(params) : params;
-  const story = mockStories.find(s => s.id === resolvedParams.storyId);
+  const story = mockStories.find(s => s.id === params.storyId);
   
   if (!story) {
     notFound();
   }
 
-  const episodeIndex = story.episodes.findIndex(e => e.id === resolvedParams.episodeId);
+  const episodeIndex = story.episodes.findIndex(e => e.id === params.episodeId);
   const episode = story.episodes[episodeIndex];
 
   if (!episode) {
