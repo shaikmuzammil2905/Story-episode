@@ -241,7 +241,7 @@ export default function Home() {
             </div>
             <div className={styles.benefitsVisual}>
               <Image 
-                src="https://images.unsplash.com/photo-1522881115234-df190f074d2b?w=800&q=80" 
+                src="/images/reading-on-phone.jpg" 
                 alt="Reading on phone" 
                 fill 
                 className={styles.benefitsImg}
