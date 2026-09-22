@@ -11,7 +11,7 @@ export default function AboutPage() {
       <header className={styles.hero}>
         <div className="container">
           <div className={styles.heroContent}>
-            <h1 className="heading-xl">Read. Explore. Keep Coming Back.</h1>
+            <h1 className="heading-xl">ABOUT STORYEPISODES</h1>
             <p className="text-xl">
               StoryEpisodes is a story-focused reading platform created for readers who enjoy discovering stories one episode at a time.
             </p>
@@ -24,7 +24,7 @@ export default function AboutPage() {
           <div className={styles.imageContent}>
             <div className={styles.aboutImageWrapper}>
               <Image 
-                src="https://images.unsplash.com/photo-1532012197267-da84d127e765?w=800&q=80" 
+                src="/images/about-visual.jpg" 
                 alt="Storytelling and reading" 
                 fill 
                 className={styles.aboutImage}
@@ -32,25 +32,33 @@ export default function AboutPage() {
             </div>
           </div>
           <div className={styles.textContent}>
-            <h2 className="heading-lg" style={{ marginBottom: '1.5rem' }}>About StoryEpisodes</h2>
-            <p className="text-lg text-muted" style={{ marginBottom: '1.5rem' }}>
-              StoryEpisodes is a story-focused reading platform created for readers who enjoy discovering stories one episode at a time.
-            </p>
             <p className="text-lg text-muted" style={{ marginBottom: '1.5rem' }}>
               Our idea is simple:
             </p>
-            <ul className={styles.ideaList}>
-              <li>Read.</li>
-              <li>Explore.</li>
-              <li>Keep Coming Back.</li>
-            </ul>
+            <div className={styles.ideaList}>
+              <div className={styles.ideaItem}>
+                <span className={styles.number}>01 /</span>
+                <span className={styles.content}>Read</span>
+              </div>
+              <div className={styles.ideaItem}>
+                <span className={styles.number}>02 /</span>
+                <span className={styles.content}>Explore</span>
+              </div>
+              <div className={styles.ideaItem}>
+                <span className={styles.number}>03 /</span>
+                <span className={styles.content}>Keep Coming Back</span>
+              </div>
+            </div>
             <p className="text-lg text-muted" style={{ marginBottom: '2rem' }}>
-              StoryEpisodes makes it easy for readers to discover engaging stories, explore different genres, follow ongoing series and continue reading episode by episode.
+              StoryEpisodes makes it easier to discover engaging stories, explore different genres, follow ongoing series and continue reading episode by episode.
             </p>
             
-            <h2 className="heading-lg" style={{ marginBottom: '1.5rem' }}>Why StoryEpisodes?</h2>
+            <h2 className="heading-lg" style={{ marginBottom: '1.5rem' }}>WHY STORYEPISODES?</h2>
             <p className="text-lg text-muted" style={{ marginBottom: '2rem' }}>
-              Stories become more exciting when there is always another episode waiting. StoryEpisodes is designed around episodic storytelling, helping readers discover new worlds, characters and adventures while giving them a reason to return for the next chapter.
+              Stories become more exciting when there is always another episode waiting.
+            </p>
+            <p className="text-lg text-muted" style={{ marginBottom: '2rem' }}>
+              StoryEpisodes is designed around episodic storytelling, helping readers discover new worlds, characters and adventures while giving them a reason to return for the next chapter.
             </p>
           </div>
         </div>
@@ -58,31 +66,31 @@ export default function AboutPage() {
 
       <section className={styles.valuesSection}>
         <div className="container section-padding">
-          <h2 className="heading-lg" style={{ textAlign: 'center', marginBottom: '4rem' }}>Our Reading Experience</h2>
+          <h2 className="heading-lg" style={{ textAlign: 'center', marginBottom: '4rem' }}>OUR READING EXPERIENCE</h2>
           
           <div className={styles.valuesGrid}>
             <div className={styles.valueCard}>
               <div className={styles.valueIcon}><Map size={32} /></div>
               <h3 className="heading-md">Discover & Browse</h3>
-              <p className="text-muted">Discover new stories, browse different genres, and explore talented authors.</p>
+              <p className="text-muted">Discover new stories and browse different genres</p>
             </div>
             
             <div className={styles.valueCard}>
               <div className={styles.valueIcon}><BookOpen size={32} /></div>
               <h3 className="heading-md">Read Episodes</h3>
-              <p className="text-muted">Read stories episode by episode, following your favorite ongoing series.</p>
+              <p className="text-muted">Read episodes and explore authors</p>
             </div>
             
             <div className={styles.valueCard}>
               <div className={styles.valueIcon}><Sparkles size={32} /></div>
               <h3 className="heading-md">Follow Stories</h3>
-              <p className="text-muted">Follow favorite stories, bookmark them, and always discover new episodes.</p>
+              <p className="text-muted">Follow favorite stories and bookmark them</p>
             </div>
             
             <div className={styles.valueCard}>
               <div className={styles.valueIcon}><RefreshCcw size={32} /></div>
               <h3 className="heading-md">Continue Reading</h3>
-              <p className="text-muted">Easily pick up exactly where you left off and continue reading.</p>
+              <p className="text-muted">Continue reading and discover new episodes</p>
             </div>
           </div>
         </div>
@@ -90,21 +98,21 @@ export default function AboutPage() {
       
       <section className="section-padding container">
         <div className={styles.futureSection}>
-          <h2 className="heading-lg" style={{ marginBottom: '1.5rem', textAlign: 'center' }}>Our Future</h2>
+          <h2 className="heading-lg" style={{ marginBottom: '1.5rem', textAlign: 'center' }}>OUR FUTURE</h2>
           <p className="text-lg text-muted" style={{ marginBottom: '2.5rem', maxWidth: '800px', margin: '0 auto 2.5rem', textAlign: 'center' }}>
             StoryEpisodes is designed to grow into a larger storytelling platform with future possibilities such as:
           </p>
-          <ul className={styles.futureList}>
-            <li>Premium stories</li>
-            <li>Exclusive stories</li>
-            <li>Early-access episodes</li>
-            <li>Complete story access</li>
-            <li>Bonus chapters</li>
-            <li>Ad-free reading</li>
-            <li>Members-only content</li>
-            <li>Author opportunities</li>
-            <li>Reader communities</li>
-          </ul>
+          <div className={styles.futureList}>
+            <div className={styles.futureItem}><span className={styles.bullet}>•</span><span className={styles.content}>Premium stories</span></div>
+            <div className={styles.futureItem}><span className={styles.bullet}>•</span><span className={styles.content}>Exclusive stories</span></div>
+            <div className={styles.futureItem}><span className={styles.bullet}>•</span><span className={styles.content}>Early-access episodes</span></div>
+            <div className={styles.futureItem}><span className={styles.bullet}>•</span><span className={styles.content}>Complete story access</span></div>
+            <div className={styles.futureItem}><span className={styles.bullet}>•</span><span className={styles.content}>Bonus chapters</span></div>
+            <div className={styles.futureItem}><span className={styles.bullet}>•</span><span className={styles.content}>Ad-free reading</span></div>
+            <div className={styles.futureItem}><span className={styles.bullet}>•</span><span className={styles.content}>Members-only content</span></div>
+            <div className={styles.futureItem}><span className={styles.bullet}>•</span><span className={styles.content}>Author opportunities</span></div>
+            <div className={styles.futureItem}><span className={styles.bullet}>•</span><span className={styles.content}>Reader communities</span></div>
+          </div>
         </div>
       </section>
 
@@ -117,3 +125,4 @@ export default function AboutPage() {
     </div>
   );
 }
+
