@@ -4,8 +4,9 @@ import { mockAuthors, mockStories } from '@/data/mockData';
 import StoryCard from '@/components/StoryCard';
 import Button from '@/components/Button';
 
-export default function AuthorDetailPage({ params }: { params: { id: string } }) {
-  const author = mockAuthors.find(a => a.id === params.id || a.name.toLowerCase().replace(/\s+/g, '-') === params.id);
+export default async function AuthorDetailPage({ params }: { params: Promise<{ id: string }> | { id: string } }) {
+  const resolvedParams = await params;
+  const author = mockAuthors.find(a => a.id === resolvedParams.id || a.name.toLowerCase().replace(/\s+/g, '-') === resolvedParams.id);
   
   if (!author) {
     // Graceful fallback for missing authors instead of 404

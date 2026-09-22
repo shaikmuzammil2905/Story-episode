@@ -5,8 +5,9 @@ import { mockGenres, mockStories } from '@/data/mockData';
 import StoryCard from '@/components/StoryCard';
 import Button from '@/components/Button';
 
-export default function GenreDetailPage({ params }: { params: { id: string } }) {
-  const genre = mockGenres.find(g => g.id === params.id || g.name.toLowerCase() === params.id.toLowerCase());
+export default async function GenreDetailPage({ params }: { params: Promise<{ id: string }> | { id: string } }) {
+  const resolvedParams = await params;
+  const genre = mockGenres.find(g => g.id === resolvedParams.id || g.name.toLowerCase() === resolvedParams.id.toLowerCase());
   
   if (!genre) {
     // If not found in mock data, show a graceful fallback instead of 404

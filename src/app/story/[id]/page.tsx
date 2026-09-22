@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, use } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -12,7 +12,7 @@ import ShareModal from '../../../components/ShareModal';
 import StoryCard from '../../../components/StoryCard';
 
 // Next.js App Router dynamic params
-export default function StoryDetailsPage({ params }: { params: { id: string } }) {
+export default function StoryDetailsPage({ params }: { params: Promise<{ id: string }> | { id: string } }) {
   const [isShareOpen, setIsShareOpen] = useState(false);
   const [pageUrl, setPageUrl] = useState('');
 
@@ -20,7 +20,9 @@ export default function StoryDetailsPage({ params }: { params: { id: string } })
     setPageUrl(window.location.href);
   }, []);
 
-  const story = mockStories.find(s => s.id === params.id);
+  // Unwrap params using React.use for Next.js 15+ compatibility
+  const resolvedParams = params instanceof Promise ? use(params) : params;
+  const story = mockStories.find(s => s.id === resolvedParams.id);
   
   if (!story) {
     notFound();
