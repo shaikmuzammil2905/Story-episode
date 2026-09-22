@@ -180,10 +180,10 @@ export default function Home() {
             
             <div className={styles.howVisual}>
               <Image 
-                src="https://images.unsplash.com/photo-1455390582262-044cdead27d8?w=800&q=80" 
+                src="/images/story-discovery.png" 
                 alt="Story discovery journey" 
                 fill 
-                className={styles.howImg}
+                className={`${styles.howImg} animate-float`}
               />
             </div>
           </div>
