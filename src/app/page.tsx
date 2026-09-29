@@ -1,20 +1,75 @@
+"use client";
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Search, ChevronRight, PlayCircle, Clock, BookOpen, Smartphone, Bell, Star, TrendingUp } from 'lucide-react';
 import Image from 'next/image';
 import styles from './page.module.css';
-import { mockStories, mockGenres } from '../data/mockData';
+import { mockGenres } from '../data/mockData';
 import StoryCard from '../components/StoryCard';
 import GenreCard from '../components/GenreCard';
 import Button from '../components/Button';
+import { Story } from '../types';
 
 export default function Home() {
-  const publishedStories = mockStories.filter(s => s.published === true);
+  const [stories, setStories] = useState<Story[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchStories() {
+      try {
+        const res = await fetch('/api/stories');
+        const json = await res.json();
+        if (json.success) {
+          setStories(json.data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch stories", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchStories();
+  }, []);
+
+  const publishedStories = stories.filter(s => s.published === true);
   const featuredStories = publishedStories.filter(s => s.isFeatured);
   const trendingStories = publishedStories.filter(s => s.isTrending);
   const latestStories = [...publishedStories].reverse();
   const novelStories = publishedStories.filter(s => s.categoryId === 'c1');
-  const longStories = publishedStories.filter(s => s.categoryId === 'c1' || s.episodes.length > 5);
-  const shortStories = publishedStories.filter(s => s.categoryId === 'c2' || (s.episodes.length > 0 && s.episodes.length <= 5));
+  const longStories = publishedStories.filter(s => s.categoryId === 'c1' || (s.episodes && s.episodes.length > 5));
+  const shortStories = publishedStories.filter(s => s.categoryId === 'c2' || (s.episodes && s.episodes.length > 0 && s.episodes.length <= 5));
+
+  const renderStoryGrid = (storiesList: Story[], emptyMessage: string) => {
+    if (loading) {
+      return (
+        <div className={styles.storyGrid}>
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className={styles.skeletonCard}>
+              <div className={styles.skeletonImage}></div>
+              <div className={styles.skeletonText}></div>
+              <div className={styles.skeletonTextSmall}></div>
+            </div>
+          ))}
+        </div>
+      );
+    }
+    
+    if (storiesList.length === 0) {
+      return (
+        <div className={styles.emptyState}>
+          <p>{emptyMessage}</p>
+        </div>
+      );
+    }
+    
+    return (
+      <div className={styles.storyGrid}>
+        {storiesList.map(story => (
+          <StoryCard key={story.id} story={story} />
+        ))}
+      </div>
+    );
+  };
 
   return (
     <div className={styles.homeWrapper}>
@@ -88,11 +143,7 @@ export default function Home() {
               View All <ChevronRight size={18} />
             </Link>
           </div>
-          <div className={styles.storyGrid}>
-            {featuredStories.map(story => (
-              <StoryCard key={story.id} story={story} />
-            ))}
-          </div>
+          {renderStoryGrid(featuredStories, "No featured stories found for this filter.")}
         </div>
       </section>
 
@@ -122,11 +173,7 @@ export default function Home() {
               View All <ChevronRight size={18} />
             </Link>
           </div>
-          <div className={styles.storyGrid}>
-            {trendingStories.map(story => (
-              <StoryCard key={story.id} story={story} />
-            ))}
-          </div>
+          {renderStoryGrid(trendingStories, "No trending stories found for this filter.")}
         </div>
       </section>
 
@@ -218,11 +265,7 @@ export default function Home() {
           <div className={styles.sectionHeader}>
             <h2 className="heading-lg">All Stories</h2>
           </div>
-          <div className={styles.storyGrid}>
-            {publishedStories.map(story => (
-              <StoryCard key={story.id} story={story} />
-            ))}
-          </div>
+          {renderStoryGrid(publishedStories, "No popular stories found for this filter.")}
         </div>
       </section>
 
@@ -230,16 +273,12 @@ export default function Home() {
       <section className={`section-padding ${styles.featuredSection}`}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <h2 className="heading-lg">Novels</h2>
+            <h2 className="heading-lg">Latest Novel Chapters & Stories</h2>
             <Link href="/novels" className={styles.viewAll}>
               Explore Novels <ChevronRight size={18} />
             </Link>
           </div>
-          <div className={styles.storyGrid}>
-            {novelStories.map(story => (
-              <StoryCard key={story.id} story={story} />
-            ))}
-          </div>
+          {renderStoryGrid(novelStories, "No latest stories found for this filter.")}
         </div>
       </section>
 
@@ -252,11 +291,7 @@ export default function Home() {
               Explore Long Stories <ChevronRight size={18} />
             </Link>
           </div>
-          <div className={styles.storyGrid}>
-            {longStories.map(story => (
-              <StoryCard key={story.id} story={story} />
-            ))}
-          </div>
+          {renderStoryGrid(longStories, "No long stories found for this filter.")}
         </div>
       </section>
 
@@ -269,11 +304,7 @@ export default function Home() {
               Explore Short Stories <ChevronRight size={18} />
             </Link>
           </div>
-          <div className={styles.storyGrid}>
-            {shortStories.map(story => (
-              <StoryCard key={story.id} story={story} />
-            ))}
-          </div>
+          {renderStoryGrid(shortStories, "No short stories found for this filter.")}
         </div>
       </section>
 
