@@ -1,39 +1,14 @@
-"use client";
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Search, ChevronRight, PlayCircle, Clock, BookOpen, Smartphone, Bell, Star, TrendingUp } from 'lucide-react';
 import Image from 'next/image';
 import styles from './page.module.css';
-import { mockGenres, mockStories as fallbackMockStories } from '../data/mockData';
+import { mockGenres, mockStories } from '../data/mockData';
 import StoryCard from '../components/StoryCard';
 import GenreCard from '../components/GenreCard';
 import Button from '../components/Button';
-import { Story } from '../types';
 
 export default function Home() {
-  const [stories, setStories] = useState<Story[]>(fallbackMockStories);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchStories() {
-      try {
-        const res = await fetch('/api/stories');
-        if (res.ok) {
-          const json = await res.json();
-          if (json.success && json.data && json.data.length > 0) {
-            setStories(json.data);
-          }
-        }
-      } catch (error) {
-        console.error("Failed to fetch stories from API", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchStories();
-  }, []);
-
-  const publishedStories = stories.filter(s => s.published === true);
+  const publishedStories = mockStories.filter(s => s.published === true);
   const featuredStories = publishedStories.filter(s => s.isFeatured);
   const trendingStories = publishedStories.filter(s => s.isTrending);
   const latestStories = [...publishedStories].reverse();
@@ -41,21 +16,7 @@ export default function Home() {
   const longStories = publishedStories.filter(s => s.categoryId === 'c1' || (s.episodes && s.episodes.length > 5));
   const shortStories = publishedStories.filter(s => s.categoryId === 'c2' || (s.episodes && s.episodes.length > 0 && s.episodes.length <= 5));
 
-  const renderStoryGrid = (storiesList: Story[], emptyMessage: string) => {
-    if (loading) {
-      return (
-        <div className={styles.storyGrid}>
-          {[...Array(4)].map((_, i) => (
-            <div key={i} className={styles.skeletonCard}>
-              <div className={styles.skeletonImage}></div>
-              <div className={styles.skeletonText}></div>
-              <div className={styles.skeletonTextSmall}></div>
-            </div>
-          ))}
-        </div>
-      );
-    }
-    
+  const renderStoryGrid = (storiesList: any[], emptyMessage: string) => {
     if (storiesList.length === 0) {
       return (
         <div className={styles.emptyState}>
