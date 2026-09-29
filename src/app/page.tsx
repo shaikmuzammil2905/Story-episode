@@ -14,6 +14,7 @@ export default function Home() {
   const latestStories = [...publishedStories].reverse().slice(0, 3);
   const novelStories = publishedStories.filter(s => s.categoryId === 'c1').slice(0, 3);
   const longStories = publishedStories.filter(s => s.categoryId === 'c1' || s.episodes.length > 5).slice(0, 3);
+  const shortStories = publishedStories.filter(s => s.categoryId === 'c2' || (s.episodes.length > 0 && s.episodes.length <= 5)).slice(0, 3);
 
   return (
     <div className={styles.homeWrapper}>
@@ -253,6 +254,23 @@ export default function Home() {
           </div>
           <div className={styles.storyGrid}>
             {longStories.map(story => (
+              <StoryCard key={story.id} story={story} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8c. Short Stories */}
+      <section className={`section-padding ${styles.featuredSection}`}>
+        <div className="container">
+          <div className={styles.sectionHeader}>
+            <h2 className="heading-lg">Short Stories</h2>
+            <Link href="/short-stories" className={styles.viewAll}>
+              Explore Short Stories <ChevronRight size={18} />
+            </Link>
+          </div>
+          <div className={styles.storyGrid}>
+            {shortStories.map(story => (
               <StoryCard key={story.id} story={story} />
             ))}
           </div>
