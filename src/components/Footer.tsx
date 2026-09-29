@@ -41,11 +41,22 @@ export default function Footer() {
         </div>
 
         <div className={styles.linksCol}>
+          <h3>Categories</h3>
+          <nav>
+            <Link href="/novels">Novels</Link>
+            <Link href="/long-stories">Long Stories</Link>
+            <Link href="/short-stories">Short Stories</Link>
+            <Link href="/genres/romance">Romance</Link>
+            <Link href="/genres/thriller">Thriller</Link>
+          </nav>
+        </div>
+
+        <div className={styles.linksCol}>
           <h3>Legal</h3>
           <nav>
-            <Link href="/">Privacy Policy</Link>
-            <Link href="/">Terms & Conditions</Link>
-            <Link href="/">Cookie Policy</Link>
+            <Link href="/privacy">Privacy Policy</Link>
+            <Link href="/terms">Terms & Conditions</Link>
+            <Link href="/cookies">Cookie Policy</Link>
           </nav>
         </div>
 

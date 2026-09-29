@@ -41,7 +41,7 @@ export default function StoriesPage() {
 
         {/* Story Grid */}
         <div className={styles.storyGrid}>
-          {mockStories.map(story => (
+          {mockStories.filter(s => s.published === true).map(story => (
             <StoryCard key={story.id} story={story} />
           ))}
         </div>

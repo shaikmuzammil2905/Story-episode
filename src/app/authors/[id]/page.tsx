@@ -19,7 +19,7 @@ export default async function AuthorDetailPage({ params }: { params: Promise<{ i
     );
   }
 
-  const authorStories = mockStories.filter(s => s.authorId === author.id);
+  const authorStories = mockStories.filter(s => s.authorId === author.id && s.published === true);
 
   return (
     <div className="container section-padding">

@@ -76,6 +76,7 @@ export const mockStories: Story[] = [
     publishedDate: "2024-01-15",
     isFeatured: true,
     isTrending: true,
+    published: true,
     episodes: [
       {
         id: "e1",
@@ -110,6 +111,7 @@ export const mockStories: Story[] = [
     publishedDate: "2023-11-05",
     isFeatured: true,
     isTrending: false,
+    published: true,
     episodes: [
       {
         id: "e1",
@@ -144,6 +146,7 @@ export const mockStories: Story[] = [
     publishedDate: "2023-08-20",
     isFeatured: false,
     isTrending: true,
+    published: true,
     episodes: [
       {
         id: "e1",
@@ -154,5 +157,23 @@ export const mockStories: Story[] = [
         publishedDate: "2023-08-20",
       },
     ],
+  },
+  {
+    id: "s4",
+    title: "Draft Story Never Published",
+    authorId: "a1",
+    authorName: "Elena Vance",
+    genre: "Horror",
+    categoryId: "c2",
+    shortDescription: "This should not be visible anywhere.",
+    longDescription: "Unpublished long desc.",
+    coverImage: "/images/stories/horror.jpg",
+    status: "Ongoing",
+    isPremium: false,
+    publishedDate: "2024-02-01",
+    isFeatured: false,
+    isTrending: false,
+    published: false,
+    episodes: [],
   }
 ];

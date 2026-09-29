@@ -21,7 +21,7 @@ export default function StoryDetailsPage() {
     setPageUrl(window.location.href);
   }, []);
 
-  const story = mockStories.find(s => s.id === params.id);
+  const story = mockStories.find(s => s.id === params.id && s.published === true);
   
   if (!story) {
     notFound();
@@ -137,7 +137,7 @@ export default function StoryDetailsPage() {
           <h2 className="heading-md" style={{ marginBottom: '2rem' }}>Related Stories</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '2rem' }}>
             {mockStories
-              .filter(s => s.genre === story.genre && s.id !== story.id)
+              .filter(s => s.genre === story.genre && s.id !== story.id && s.published === true)
               .slice(0, 3)
               .map(relatedStory => (
                 <StoryCard key={relatedStory.id} story={relatedStory} />

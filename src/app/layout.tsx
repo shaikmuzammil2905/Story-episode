@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   description: "Discover amazing stories, one episode at a time. Dive into captivating series, explore new genres, and never miss an episode.",
   keywords: ["stories", "episodes", "reading", "fiction", "novels", "web novel", "romance", "fantasy", "mystery"],
   authors: [{ name: "StoryEpisodes Team" }],
+  verification: {
+    google: "_ya0JkAFoWfFwftWw1Y9upN5Y5h_F5_cAcnycfH0QKQ",
+  },
   openGraph: {
     title: "StoryEpisodes | Discover Amazing Stories",
     description: "Read the best serialized stories and episodes online.",

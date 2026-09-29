@@ -20,7 +20,7 @@ export default async function GenreDetailPage({ params }: { params: Promise<{ id
     );
   }
 
-  const genreStories = mockStories.filter(s => s.genre.toLowerCase() === genre.name.toLowerCase());
+  const genreStories = mockStories.filter(s => s.genre.toLowerCase() === genre.name.toLowerCase() && s.published === true);
 
   return (
     <div className="container section-padding">

@@ -23,6 +23,7 @@ export interface Story {
   episodes: Episode[];
   isFeatured?: boolean;
   isTrending?: boolean;
+  published?: boolean;
 }
 
 export interface Author {

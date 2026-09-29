@@ -8,9 +8,12 @@ import GenreCard from '../components/GenreCard';
 import Button from '../components/Button';
 
 export default function Home() {
-  const featuredStories = mockStories.filter(s => s.isFeatured).slice(0, 3);
-  const trendingStories = mockStories.filter(s => s.isTrending).slice(0, 3);
-  const latestStories = [...mockStories].reverse().slice(0, 3);
+  const publishedStories = mockStories.filter(s => s.published === true);
+  const featuredStories = publishedStories.filter(s => s.isFeatured).slice(0, 3);
+  const trendingStories = publishedStories.filter(s => s.isTrending).slice(0, 3);
+  const latestStories = [...publishedStories].reverse().slice(0, 3);
+  const novelStories = publishedStories.filter(s => s.categoryId === 'c1').slice(0, 3);
+  const longStories = publishedStories.filter(s => s.categoryId === 'c1' || s.episodes.length > 5).slice(0, 3);
 
   return (
     <div className={styles.homeWrapper}>
@@ -213,12 +216,46 @@ export default function Home() {
         <div className="container">
           <div className={styles.sectionHeader}>
             <h2 className="heading-lg">Latest Stories</h2>
-            <Link href="/stories?sort=new" className={styles.viewAll}>
+            <Link href="/stories" className={styles.viewAll}>
               View All <ChevronRight size={18} />
             </Link>
           </div>
           <div className={styles.storyGrid}>
             {latestStories.map(story => (
+              <StoryCard key={story.id} story={story} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8a. Novels */}
+      <section className={`section-padding ${styles.featuredSection}`}>
+        <div className="container">
+          <div className={styles.sectionHeader}>
+            <h2 className="heading-lg">Novels</h2>
+            <Link href="/novels" className={styles.viewAll}>
+              Explore Novels <ChevronRight size={18} />
+            </Link>
+          </div>
+          <div className={styles.storyGrid}>
+            {novelStories.map(story => (
+              <StoryCard key={story.id} story={story} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8b. Long Stories */}
+      <section className={`section-padding ${styles.latestSection}`}>
+        <div className="container">
+          <div className={styles.sectionHeader}>
+            <h2 className="heading-lg">Long Stories</h2>
+            <Link href="/long-stories" className={styles.viewAll}>
+              Explore Long Stories <ChevronRight size={18} />
+            </Link>
+          </div>
+          <div className={styles.storyGrid}>
+            {longStories.map(story => (
               <StoryCard key={story.id} story={story} />
             ))}
           </div>

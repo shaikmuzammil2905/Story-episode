@@ -31,8 +31,8 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   if (!isOpen) return null;
 
   const filteredStories = query ? mockStories.filter(s => 
-    s.title.toLowerCase().includes(query.toLowerCase()) || 
-    s.authorName.toLowerCase().includes(query.toLowerCase())
+    (s.title.toLowerCase().includes(query.toLowerCase()) || 
+    s.authorName.toLowerCase().includes(query.toLowerCase())) && s.published === true
   ) : [];
 
   const filteredAuthors = query ? mockAuthors.filter(a => 
