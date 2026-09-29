@@ -4,14 +4,14 @@ import Link from 'next/link';
 import { Search, ChevronRight, PlayCircle, Clock, BookOpen, Smartphone, Bell, Star, TrendingUp } from 'lucide-react';
 import Image from 'next/image';
 import styles from './page.module.css';
-import { mockGenres } from '../data/mockData';
+import { mockGenres, mockStories as fallbackMockStories } from '../data/mockData';
 import StoryCard from '../components/StoryCard';
 import GenreCard from '../components/GenreCard';
 import Button from '../components/Button';
 import { Story } from '../types';
 
 export default function Home() {
-  const [stories, setStories] = useState<Story[]>([]);
+  const [stories, setStories] = useState<Story[]>(fallbackMockStories);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -20,21 +20,12 @@ export default function Home() {
         const res = await fetch('/api/stories');
         if (res.ok) {
           const json = await res.json();
-          if (json.success) {
+          if (json.success && json.data && json.data.length > 0) {
             setStories(json.data);
-            return;
           }
         }
       } catch (error) {
         console.error("Failed to fetch stories from API", error);
-      } 
-      
-      // Fallback: If API fetch fails (e.g. static export, network issue), load from mockData
-      try {
-        const { mockStories } = await import('../data/mockData');
-        setStories(mockStories);
-      } catch (e) {
-        console.error("Failed to load mock data fallback", e);
       } finally {
         setLoading(false);
       }
