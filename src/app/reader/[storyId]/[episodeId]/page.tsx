@@ -72,10 +72,30 @@ export default function ReaderPage() {
             <p className={styles.author}>By {story.authorName}</p>
           </div>
           
-          <div 
-            className={styles.textContent}
-            dangerouslySetInnerHTML={{ __html: episode.content }} 
-          />
+          {(() => {
+            if (!episode.content) return null;
+            
+            const hasBlockTags = /<(p|div|h[1-6]|ul|ol|blockquote|article|section)[^>]*>/i.test(episode.content);
+            
+            if (hasBlockTags) {
+              return (
+                <div 
+                  className={styles.textContent}
+                  dangerouslySetInnerHTML={{ __html: episode.content }} 
+                />
+              );
+            }
+            
+            const paragraphs = episode.content.split(/\n\s*\n/).map(p => p.trim()).filter(Boolean);
+            
+            return (
+              <div className={styles.textContent}>
+                {paragraphs.map((p, idx) => (
+                  <p key={idx} dangerouslySetInnerHTML={{ __html: p }} />
+                ))}
+              </div>
+            );
+          })()}
         </div>
       </main>
 
