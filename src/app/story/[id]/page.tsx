@@ -131,6 +131,7 @@ export default function StoryDetailsPage() {
             )}
           </div>
         </div>
+      </section>
       {/* Related Stories Section */}
       <section className="section-padding" style={{ backgroundColor: 'var(--soft-cream)' }}>
         <div className="container">
