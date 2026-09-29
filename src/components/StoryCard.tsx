@@ -6,11 +6,12 @@ import styles from './StoryCard.module.css';
 
 interface StoryCardProps {
   story: Story;
+  target?: string;
 }
 
-export default function StoryCard({ story }: StoryCardProps) {
+export default function StoryCard({ story, target }: StoryCardProps) {
   return (
-    <Link href={`/story/${story.id}`} className={styles.card}>
+    <Link href={`/story/${story.id}`} className={styles.card} target={target}>
       <div className={styles.imageContainer}>
         <Image 
           src={story.coverImage} 

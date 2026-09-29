@@ -106,10 +106,10 @@ export default function ReaderPage() {
             <h3 className="heading-sm" style={{ marginBottom: '1.5rem', textAlign: 'center' }}>You've reached the end! Try these next:</h3>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '1.5rem' }}>
               {mockStories
-                .filter(s => s.genre === story.genre && s.id !== story.id)
+                .filter(s => s.genre === story.genre && s.id !== story.id && s.published === true)
                 .slice(0, 2)
                 .map(relatedStory => (
-                  <StoryCard key={relatedStory.id} story={relatedStory} />
+                  <StoryCard key={relatedStory.id} story={relatedStory} target="_blank" />
                 ))}
             </div>
           </div>

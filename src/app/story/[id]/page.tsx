@@ -141,7 +141,7 @@ export default function StoryDetailsPage() {
               .filter(s => s.genre === story.genre && s.id !== story.id && s.published === true)
               .slice(0, 3)
               .map(relatedStory => (
-                <StoryCard key={relatedStory.id} story={relatedStory} />
+                <StoryCard key={relatedStory.id} story={relatedStory} target="_blank" />
               ))}
           </div>
         </div>

@@ -211,17 +211,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 8. Latest Stories */}
+      {/* 8. All Stories */}
       <section className={`section-padding ${styles.latestSection}`}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <h2 className="heading-lg">Latest Stories</h2>
-            <Link href="/stories" className={styles.viewAll}>
-              View All <ChevronRight size={18} />
-            </Link>
+            <h2 className="heading-lg">All Stories</h2>
           </div>
           <div className={styles.storyGrid}>
-            {latestStories.map(story => (
+            {publishedStories.map(story => (
               <StoryCard key={story.id} story={story} />
             ))}
           </div>
