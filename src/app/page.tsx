@@ -9,12 +9,12 @@ import Button from '../components/Button';
 
 export default function Home() {
   const publishedStories = mockStories.filter(s => s.published === true);
-  const featuredStories = publishedStories.filter(s => s.isFeatured).slice(0, 3);
-  const trendingStories = publishedStories.filter(s => s.isTrending).slice(0, 3);
-  const latestStories = [...publishedStories].reverse().slice(0, 3);
-  const novelStories = publishedStories.filter(s => s.categoryId === 'c1').slice(0, 3);
-  const longStories = publishedStories.filter(s => s.categoryId === 'c1' || s.episodes.length > 5).slice(0, 3);
-  const shortStories = publishedStories.filter(s => s.categoryId === 'c2' || (s.episodes.length > 0 && s.episodes.length <= 5)).slice(0, 3);
+  const featuredStories = publishedStories.filter(s => s.isFeatured);
+  const trendingStories = publishedStories.filter(s => s.isTrending);
+  const latestStories = [...publishedStories].reverse();
+  const novelStories = publishedStories.filter(s => s.categoryId === 'c1');
+  const longStories = publishedStories.filter(s => s.categoryId === 'c1' || s.episodes.length > 5);
+  const shortStories = publishedStories.filter(s => s.categoryId === 'c2' || (s.episodes.length > 0 && s.episodes.length <= 5));
 
   return (
     <div className={styles.homeWrapper}>
