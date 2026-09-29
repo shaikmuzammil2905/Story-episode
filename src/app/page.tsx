@@ -18,12 +18,23 @@ export default function Home() {
     async function fetchStories() {
       try {
         const res = await fetch('/api/stories');
-        const json = await res.json();
-        if (json.success) {
-          setStories(json.data);
+        if (res.ok) {
+          const json = await res.json();
+          if (json.success) {
+            setStories(json.data);
+            return;
+          }
         }
       } catch (error) {
-        console.error("Failed to fetch stories", error);
+        console.error("Failed to fetch stories from API", error);
+      } 
+      
+      // Fallback: If API fetch fails (e.g. static export, network issue), load from mockData
+      try {
+        const { mockStories } = await import('../data/mockData');
+        setStories(mockStories);
+      } catch (e) {
+        console.error("Failed to load mock data fallback", e);
       } finally {
         setLoading(false);
       }
@@ -161,7 +172,9 @@ export default function Home() {
       <section className={`section-padding ${styles.latestSection}`}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <h2 className="heading-lg">Long Stories</h2>
+            <Link href="/long-stories" style={{ textDecoration: 'none', color: 'inherit' }}>
+              <h2 className="heading-lg">Long Stories</h2>
+            </Link>
             <Link href="/long-stories" className={styles.viewAll}>
               Explore Long Stories <ChevronRight size={18} />
             </Link>
