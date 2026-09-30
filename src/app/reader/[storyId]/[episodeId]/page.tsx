@@ -16,6 +16,7 @@ export default function ReaderPage() {
   const [pageUrl, setPageUrl] = useState('');
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setPageUrl(window.location.href);
   }, []);
 
@@ -103,7 +104,7 @@ export default function ReaderPage() {
       {!nextEpisode && (
         <section style={{ padding: '2rem 1rem', backgroundColor: 'var(--soft-cream)' }}>
           <div className="container" style={{ maxWidth: '800px' }}>
-            <h3 className="heading-sm" style={{ marginBottom: '1.5rem', textAlign: 'center' }}>You've reached the end! Try these next:</h3>
+            <h3 className="heading-sm" style={{ marginBottom: '1.5rem', textAlign: 'center' }}>You&apos;ve reached the end! Try these next:</h3>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '1.5rem' }}>
               {mockStories
                 .filter(s => s.genre === story.genre && s.id !== story.id && s.published === true)

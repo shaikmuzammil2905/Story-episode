@@ -18,6 +18,7 @@ export default function StoryDetailsPage() {
   const [pageUrl, setPageUrl] = useState('');
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setPageUrl(window.location.href);
   }, []);
 
