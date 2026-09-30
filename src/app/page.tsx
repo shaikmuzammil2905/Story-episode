@@ -12,9 +12,11 @@ export default function Home() {
   const featuredStories = publishedStories.filter(s => s.isFeatured);
   const trendingStories = publishedStories.filter(s => s.isTrending);
   const latestStories = [...publishedStories].reverse();
-  const novelStories = publishedStories.filter(s => s.categoryId === 'c1');
-  const longStories = publishedStories.filter(s => s.categoryId === 'c1' || (s.episodes && s.episodes.length > 5));
-  const shortStories = publishedStories.filter(s => s.categoryId === 'c2' || (s.episodes && s.episodes.length > 0 && s.episodes.length <= 5));
+  const novelStories = publishedStories.filter(s => s.storyType === 'Novel');
+  const longStories = publishedStories.filter(s => s.storyType === 'Long Story');
+  const shortStories = publishedStories.filter(s => s.storyType === 'Short Story');
+  const funStories = publishedStories.filter(s => s.storyType === 'Fun Story');
+  const comedyStories = publishedStories.filter(s => s.storyType === 'Comedy Story');
 
   const renderStoryGrid = (storiesList: any[], emptyMessage: string) => {
     if (storiesList.length === 0) {
@@ -97,56 +99,82 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 8. All Stories - Moved Below Header */}
-      <section className={`section-padding ${styles.latestSection}`}>
-        <div className="container">
-          <div className={styles.sectionHeader}>
-            <h2 className="heading-lg">All Stories</h2>
+      {/* Novels */}
+      {novelStories.length > 0 && (
+        <section className={`section-padding ${styles.featuredSection}`}>
+          <div className="container">
+            <div className={styles.sectionHeader}>
+              <h2 className="heading-lg">Novels</h2>
+              <Link href="/novels" className={styles.viewAll}>
+                View All <ChevronRight size={18} />
+              </Link>
+            </div>
+            {renderStoryGrid(novelStories, "No novels found.")}
           </div>
-          {renderStoryGrid(publishedStories, "No popular stories found for this filter.")}
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* 8a. Novels - Moved Below Header */}
-      <section className={`section-padding ${styles.featuredSection}`}>
-        <div className="container">
-          <div className={styles.sectionHeader}>
-            <h2 className="heading-lg">Latest Novel Chapters & Stories</h2>
-            <Link href="/novels" className={styles.viewAll}>
-              Explore Novels <ChevronRight size={18} />
-            </Link>
+      {/* Long Stories */}
+      {longStories.length > 0 && (
+        <section className={`section-padding ${styles.latestSection}`}>
+          <div className="container">
+            <div className={styles.sectionHeader}>
+              <Link href="/long-stories" style={{ textDecoration: 'none', color: 'inherit' }}>
+                <h2 className="heading-lg">Long Stories</h2>
+              </Link>
+              <Link href="/long-stories" className={styles.viewAll}>
+                View All <ChevronRight size={18} />
+              </Link>
+            </div>
+            {renderStoryGrid(longStories, "No long stories found.")}
           </div>
-          {renderStoryGrid(novelStories, "No latest stories found for this filter.")}
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* 8b. Long Stories - Moved Below Header */}
-      <section className={`section-padding ${styles.latestSection}`}>
-        <div className="container">
-          <div className={styles.sectionHeader}>
-            <Link href="/long-stories" style={{ textDecoration: 'none', color: 'inherit' }}>
-              <h2 className="heading-lg">Long Stories</h2>
-            </Link>
-            <Link href="/long-stories" className={styles.viewAll}>
-              Explore Long Stories <ChevronRight size={18} />
-            </Link>
+      {/* Short Stories */}
+      {shortStories.length > 0 && (
+        <section className={`section-padding ${styles.featuredSection}`}>
+          <div className="container">
+            <div className={styles.sectionHeader}>
+              <h2 className="heading-lg">Short Stories</h2>
+              <Link href="/short-stories" className={styles.viewAll}>
+                View All <ChevronRight size={18} />
+              </Link>
+            </div>
+            {renderStoryGrid(shortStories, "No short stories found.")}
           </div>
-          {renderStoryGrid(longStories, "No long stories found for this filter.")}
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* 8c. Short Stories - Moved Below Header */}
-      <section className={`section-padding ${styles.featuredSection}`}>
-        <div className="container">
-          <div className={styles.sectionHeader}>
-            <h2 className="heading-lg">Short Stories</h2>
-            <Link href="/short-stories" className={styles.viewAll}>
-              Explore Short Stories <ChevronRight size={18} />
-            </Link>
+      {/* Fun Stories */}
+      {funStories.length > 0 && (
+        <section className={`section-padding ${styles.latestSection}`}>
+          <div className="container">
+            <div className={styles.sectionHeader}>
+              <h2 className="heading-lg">Fun Stories</h2>
+              <Link href="/fun-stories" className={styles.viewAll}>
+                View All <ChevronRight size={18} />
+              </Link>
+            </div>
+            {renderStoryGrid(funStories, "No fun stories found.")}
           </div>
-          {renderStoryGrid(shortStories, "No short stories found for this filter.")}
-        </div>
-      </section>
+        </section>
+      )}
+
+      {/* Comedy Stories */}
+      {comedyStories.length > 0 && (
+        <section className={`section-padding ${styles.featuredSection}`}>
+          <div className="container">
+            <div className={styles.sectionHeader}>
+              <h2 className="heading-lg">Comedy Stories</h2>
+              <Link href="/comedy-stories" className={styles.viewAll}>
+                View All <ChevronRight size={18} />
+              </Link>
+            </div>
+            {renderStoryGrid(comedyStories, "No comedy stories found.")}
+          </div>
+        </section>
+      )}
 
       {/* 3. Featured Stories */}
       <section className={`section-padding ${styles.featuredSection}`}>

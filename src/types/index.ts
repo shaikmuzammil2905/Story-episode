@@ -13,7 +13,7 @@ export interface Story {
   authorId: string;
   authorName: string;
   genre: string;
-  categoryId: string;
+  storyType: "Long Story" | "Short Story" | "Novel" | "Fun Story" | "Comedy Story";
   shortDescription: string;
   longDescription: string;
   coverImage: string;

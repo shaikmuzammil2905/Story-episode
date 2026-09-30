@@ -10,7 +10,7 @@ export const metadata = {
 };
 
 export default function LongStoriesPage() {
-  const longStories = mockStories.filter(s => s.published === true);
+  const longStories = mockStories.filter(s => s.storyType === 'Long Story' && s.published === true);
 
   return (
     <div className="container section-padding">

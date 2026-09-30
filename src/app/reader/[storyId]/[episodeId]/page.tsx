@@ -86,7 +86,7 @@ export default function ReaderPage() {
               );
             }
             
-            const paragraphs = episode.content.split(/\n\s*\n/).map(p => p.trim()).filter(Boolean);
+            const paragraphs = episode.content.split(/\n+/).map(p => p.trim()).filter(Boolean);
             
             return (
               <div className={styles.textContent}>

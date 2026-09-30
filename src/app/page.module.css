@@ -131,10 +131,26 @@
 
 /* Grids */
 .storyGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
-  gap: 2rem;
+  display: flex;
+  overflow-x: auto;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
+.storyGrid::-webkit-scrollbar {
+  height: 6px;
+}
+.storyGrid::-webkit-scrollbar-thumb {
+  background: var(--subtle-gray);
+  border-radius: 4px;
+}
+.storyGrid > * {
+  flex: 0 0 auto;
+  width: 300px;
+  scroll-snap-align: start;
+}
+
 
 .genreGrid {
   display: grid;
@@ -407,6 +423,11 @@
   
   .newsletterForm {
     flex-direction: column;
+  }
+  
+  .storyGrid > * {
+    width: 85vw;
+    max-width: 300px;
   }
 }
 .skeletonCard {

@@ -1,9 +1,11 @@
 import { Story, Author, Genre, Category } from "../types";
 
 export const mockCategories: Category[] = [
-  { id: "c1", name: "Novels" },
-  { id: "c2", name: "Short Stories" },
-  { id: "c3", name: "Comics" },
+  { id: "Long Story", name: "Long Story" },
+  { id: "Short Story", name: "Short Story" },
+  { id: "Novel", name: "Novel" },
+  { id: "Fun Story", name: "Fun Story" },
+  { id: "Comedy Story", name: "Comedy Story" },
 ];
 
 export const mockGenres: Genre[] = [
@@ -67,7 +69,7 @@ export const mockStories: Story[] = [
     authorId: "a2",
     authorName: "Marcus Thorne",
     genre: "Fantasy",
-    categoryId: "c1",
+    storyType: "Novel",
     shortDescription: "A young mage discovers a dormant dragon, sparking a war that will change the realm forever.",
     longDescription: "In the land of Eldoria, magic has been forbidden for centuries. Elara, a young girl with a secret gift, stumbles upon a dormant dragon deep within the forbidden mountains. Her discovery sets off a chain of events that will awaken ancient powers and ignite a war that threatens to consume the entire realm.",
     coverImage: "/images/stories/fantasy.jpg",
@@ -102,7 +104,7 @@ export const mockStories: Story[] = [
     authorId: "a1",
     authorName: "Elena Vance",
     genre: "Mystery",
-    categoryId: "c1",
+    storyType: "Short Story",
     shortDescription: "A detective must solve a series of murders that mimic a century-old cold case.",
     longDescription: "Detective Reynolds thought he had seen it all, until a string of gruesome murders rocks the city. The unsettling part? Each crime scene perfectly mimics the infamous 'Midnight Strangler' killings from over a hundred years ago. Reynolds must race against time to stop the copycat before they complete their macabre masterpiece.",
     coverImage: "/images/stories/mystery.jpg",
@@ -137,7 +139,7 @@ export const mockStories: Story[] = [
     authorId: "a1",
     authorName: "Elena Vance",
     genre: "Romance",
-    categoryId: "c2",
+    storyType: "Short Story",
     shortDescription: "A chance encounter in Paris leads to an unforgettable romance.",
     longDescription: "When Emily traveled to Paris for a summer internship, she never expected to bump into Leo, a charming local artist. Their brief encounter quickly blossoms into a whirlwind romance, but with Emily's departure looming, they must decide if their love is worth fighting for across oceans.",
     coverImage: "/images/stories/romance.jpg",
@@ -164,7 +166,7 @@ export const mockStories: Story[] = [
     authorId: "a1",
     authorName: "Elena Vance",
     genre: "Horror",
-    categoryId: "c2",
+    storyType: "Long Story",
     shortDescription: "This should not be visible anywhere.",
     longDescription: "Unpublished long desc.",
     coverImage: "/images/stories/horror.jpg",

@@ -10,7 +10,7 @@ export const metadata = {
 };
 
 export default function ShortStoriesPage() {
-  const shortStories = mockStories.filter(s => s.categoryId === 'c2' && s.published === true);
+  const shortStories = mockStories.filter(s => s.storyType === 'Short Story' && s.published === true);
 
   return (
     <div className="container section-padding">

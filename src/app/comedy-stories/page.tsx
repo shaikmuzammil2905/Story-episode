@@ -5,23 +5,23 @@ import StoryCard from '@/components/StoryCard';
 import Button from '@/components/Button';
 
 export const metadata = {
-  title: 'Novels - StoryEpisodes',
-  description: 'Explore our collection of published novels.',
+  title: 'Comedy Stories - StoryEpisodes',
+  description: 'Explore our collection of published comedy stories.',
 };
 
-export default function NovelsPage() {
-  const novels = mockStories.filter(s => s.storyType === 'Novel' && s.published === true);
+export default function ComedyStoriesPage() {
+  const comedyStories = mockStories.filter(s => s.storyType === 'Comedy Story' && s.published === true);
 
   return (
     <div className="container section-padding">
-      <h1 className="heading-xl" style={{ marginBottom: '1rem' }}>Novels</h1>
+      <h1 className="heading-xl" style={{ marginBottom: '1rem' }}>Comedy Stories</h1>
       <p className="text-lg text-muted" style={{ marginBottom: '3rem' }}>
-        Discover our full-length novels.
+        Laugh out loud with our collection of comedy stories.
       </p>
       
-      {novels.length > 0 ? (
+      {comedyStories.length > 0 ? (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '2rem' }}>
-          {novels.map(story => (
+          {comedyStories.map(story => (
             <StoryCard key={story.id} story={story} />
           ))}
         </div>

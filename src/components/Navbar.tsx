@@ -40,7 +40,11 @@ export default function Navbar() {
         {/* Desktop Nav */}
         <nav className={styles.desktopNav}>
           <Link href="/" className={styles.navLink}>Home</Link>
-          <Link href="/stories" className={styles.navLink}>Stories</Link>
+          <Link href="/long-stories" className={styles.navLink}>Long Stories</Link>
+          <Link href="/short-stories" className={styles.navLink}>Short Stories</Link>
+          <Link href="/novels" className={styles.navLink}>Novels</Link>
+          <Link href="/fun-stories" className={styles.navLink}>Fun Stories</Link>
+          <Link href="/comedy-stories" className={styles.navLink}>Comedy Stories</Link>
           <Link href="/genres" className={styles.navLink}>Genres</Link>
           <Link href="/authors" className={styles.navLink}>Authors</Link>
           <Link href="/about" className={styles.navLink}>About</Link>
@@ -77,7 +81,11 @@ export default function Navbar() {
         </div>
         <nav className={styles.mobileNavLinks}>
           <Link href="/" onClick={() => setMobileMenuOpen(false)}>Home</Link>
-          <Link href="/stories" onClick={() => setMobileMenuOpen(false)}>Stories</Link>
+          <Link href="/long-stories" onClick={() => setMobileMenuOpen(false)}>Long Stories</Link>
+          <Link href="/short-stories" onClick={() => setMobileMenuOpen(false)}>Short Stories</Link>
+          <Link href="/novels" onClick={() => setMobileMenuOpen(false)}>Novels</Link>
+          <Link href="/fun-stories" onClick={() => setMobileMenuOpen(false)}>Fun Stories</Link>
+          <Link href="/comedy-stories" onClick={() => setMobileMenuOpen(false)}>Comedy Stories</Link>
           <Link href="/genres" onClick={() => setMobileMenuOpen(false)}>Genres</Link>
           <Link href="/authors" onClick={() => setMobileMenuOpen(false)}>Authors</Link>
           <Link href="/about" onClick={() => setMobileMenuOpen(false)}>About</Link>
